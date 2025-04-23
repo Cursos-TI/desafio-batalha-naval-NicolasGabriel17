@@ -12,36 +12,28 @@ int main() {
     }
 
     // 2. Posição inicial do navio horizontal
-    int linhaH = 1;      // Linha 2 (lembrando que começa do 0)
+    int linhaH = 1;      // Linha 2 (índice 1)
     int colunaH = 0;     // Coluna A
 
-    // Verifica se o navio cabe horizontalmente e se não há sobreposição
-    if (colunaH + 3 <= 10 &&
-        tabuleiro[linhaH][colunaH] == 0 &&
-        tabuleiro[linhaH][colunaH + 1] == 0 &&
-        tabuleiro[linhaH][colunaH + 2] == 0) {
-
-        tabuleiro[linhaH][colunaH] = 3;
-        tabuleiro[linhaH][colunaH + 1] = 3;
-        tabuleiro[linhaH][colunaH + 2] = 3;
-    }
+    tabuleiro[linhaH][colunaH] = 3;
+    tabuleiro[linhaH][colunaH + 1] = 3;
+    tabuleiro[linhaH][colunaH + 2] = 3;
 
     // 3. Posição inicial do navio vertical
     int linhaV = 2;     // Linha 3
     int colunaV = 2;    // Coluna C
 
-    // Verifica se o navio cabe verticalmente e se não há sobreposição
-    if (linhaV + 3 <= 10 &&
-        tabuleiro[linhaV][colunaV] == 0 &&
-        tabuleiro[linhaV + 1][colunaV] == 0 &&
-        tabuleiro[linhaV + 2][colunaV] == 0) {
+    tabuleiro[linhaV][colunaV] = 3;
+    tabuleiro[linhaV + 1][colunaV] = 3;
+    tabuleiro[linhaV + 2][colunaV] = 3;
 
-        tabuleiro[linhaV][colunaV] = 3;
-        tabuleiro[linhaV + 1][colunaV] = 3;
-        tabuleiro[linhaV + 2][colunaV] = 3;
+    // 4. Posiciona dois navios nas diagonais (↘ e ↙) com loop for
+    for (int k = 0; k < 3; k++) {
+        tabuleiro[k][k] = 3;           // Diagonal principal ↘
+        tabuleiro[k][9 - k] = 3;       // Diagonal secundária ↙
     }
 
-    // 4. Exibindo o tabuleiro
+    // 5. Exibindo o tabuleiro
     printf("\nTABULEIRO BATALHA NAVAL\n\n");
 
     // Cabeçalho das colunas (letras A até J)
